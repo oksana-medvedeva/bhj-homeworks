@@ -2,9 +2,8 @@ let sliderArray = Array.from(document.getElementsByClassName('slider__item'));
 let sliderPrev = Array.from(document.getElementsByClassName('slider__arrow_prev'));
 let sliderNext = Array.from(document.getElementsByClassName('slider__arrow_next'));
 
-let index = 0;
-
 function changeSliderPosition(step) {
+	let index = sliderArray.findIndex(item => item.classList.contains('slider__item_active'));
 	let nextIndex = index + step;
 	if (nextIndex < 0) {
 		nextIndex = sliderArray.length - 1;
@@ -13,7 +12,6 @@ function changeSliderPosition(step) {
 	}
 	sliderArray[index].classList.remove('slider__item_active');
 	sliderArray[nextIndex].classList.add('slider__item_active');
-	index = nextIndex;
 }
 
 sliderPrev.forEach(el => el.onclick = function() {
