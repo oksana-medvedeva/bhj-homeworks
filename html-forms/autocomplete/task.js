@@ -80,13 +80,17 @@ class Autocomplete {
         text: 'Содержимое <option>',
         value: 'Содержимое атрибута value'
       }
+    
+    this.input.addEventListener('' event => {
+      console.log({text: this.input.options[this.input.selectedIndex].text, value: this.input.value})
+    })
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+    let optionsArray = [...this.input.options];
+    let filterItems = (arr, query) => {
+      return arr.filter(element => element.text.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+    }
+    let result = filterItems(optionsArray, text);
+    return result.map(({text, value}) => ({text, value}));
   }
 }
 
