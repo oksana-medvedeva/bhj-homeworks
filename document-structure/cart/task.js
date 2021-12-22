@@ -1,4 +1,4 @@
-let cart = document.querySelector('.cart')
+let cart = document.querySelector('.cart .cart__products')
 let products = document.querySelectorAll('.product').forEach(product => {
 	let productNumber = product.querySelector('.product__quantity-value');
 	product.querySelectorAll('.product__quantity-control').forEach(quantityControl => {
