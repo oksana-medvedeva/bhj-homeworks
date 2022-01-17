@@ -3,11 +3,10 @@ form.onsubmit = submitEvent => {
 	let formData = new FormData(form);
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", "https://netology-slow-rest.herokuapp.com/upload.php");
-	let fileInput = document.getElementById('file');
-	xhr.onprogress = (progressEvent) => {
-		let fileSize = fileInput.files[0].size;
+	
+	xhr.upload.onprogress = (progressEvent) => {
 		const progress = document.getElementById('progress');
-		progress.value = progressEvent.loaded / fileSize;
+		progress.value = progressEvent.loaded / progressEvent.total;
 	}
 
 	xhr.send(formData);
